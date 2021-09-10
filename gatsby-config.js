@@ -8,7 +8,12 @@ module.exports = {
     // You can overwrite values here that are used for the SEO component
     // You can also add new values here to query them like usual
     // See all options: https://github.com/LekoArts/gatsby-themes/blob/master/themes/gatsby-theme-minimal-blog/gatsby-config.js
-    siteTitleAlt: `Minimal Blog - Gatsby Theme`,
+    siteTitle: `Jose Luis Tello`,
+    siteUrl: `https://joseluistello.gatsbyjs.io/`,
+    siteDescription: `Blog sobre programacion, analisis, finanzas y negocios.`,
+    siteLanguage: `en`,
+    siteImage: `/banner.jpg`,
+    author: `Jose Luis Tello`,
   },
   plugins: [
     {
@@ -17,22 +22,22 @@ module.exports = {
       options: {
         navigation: [
           {
-            title: `Blog`,
+            title: `Libreria`,
             slug: `/blog`,
           },
           {
-            title: `About`,
+            title: `Sobre mi`,
             slug: `/about`,
           },
         ],
         externalLinks: [
           {
             name: `Twitter`,
-            url: `https://twitter.com/lekoarts_de`,
+            url: `https://twitter.com/jotaele_tello`,
           },
           {
-            name: `Homepage`,
-            url: `https://www.lekoarts.de?utm_source=minimal-blog&utm_medium=Starter`,
+            name: `Portfolio`,
+            url: `https://joseluistello.github.io/`,
           },
         ],
       },
