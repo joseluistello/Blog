@@ -10,7 +10,7 @@ module.exports = {
     // See all options: https://github.com/LekoArts/gatsby-themes/blob/master/themes/gatsby-theme-minimal-blog/gatsby-config.js
     siteTitle: `Jose Luis Tello`,
     siteUrl: `https://joseluistello.gatsbyjs.io/`,
-    siteDescription: `Blog sobre programacion, analisis, finanzas y negocios.`,
+    siteDescription: `Simplificando la complejidad`,
     siteLanguage: `en`,
     siteImage: `/banner.jpg`,
     author: `Jose Luis Tello`,
@@ -137,7 +137,7 @@ module.exports = {
               }
             `,
             output: `rss.xml`,
-            title: `Minimal Blog - @lekoarts/gatsby-theme-minimal-blog`,
+            title: `Jose Luis Tello`,
           },
         ],
       },
