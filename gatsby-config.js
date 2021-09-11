@@ -5,15 +5,14 @@ const googleAnalyticsTrackingId = process.env.GOOGLE_ANALYTICS_ID
 
 module.exports = {
   siteMetadata: {
-    // You can overwrite values here that are used for the SEO component
-    // You can also add new values here to query them like usual
-    // See all options: https://github.com/LekoArts/gatsby-themes/blob/master/themes/gatsby-theme-minimal-blog/gatsby-config.js
     siteTitle: `Jose Luis Tello`,
-    siteUrl: `https://joseluistello.gatsbyjs.io/`,
+    siteTitleAlt: `Jose Luis Tello`,
+    siteHeadline: `Jose Luis Tello`,
+    siteUrl: `https://joseluistello.live`,
     siteDescription: `Simplificando la complejidad`,
-    siteLanguage: `en`,
+    siteLanguage: `es`,
+    author: `joseluistello`,
     siteImage: `/banner.jpg`,
-    author: `Jose Luis Tello`,
   },
   plugins: [
     {
@@ -62,7 +61,7 @@ module.exports = {
     googleAnalyticsTrackingId && {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: process.env.GOOGLE_ANALYTICS_ID,
+        trackingId: `G-J7M1D9CQQ7`,
       },
     },
     `gatsby-plugin-sitemap`,
