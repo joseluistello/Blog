@@ -35,8 +35,8 @@ module.exports = {
             url: `https://twitter.com/jotaele_tello`,
           },
           {
-            name: `Github`,
-            url: `https://github.com/joseluistello`,
+            name: `Portfolio`,
+            url: `https://joseluistello.github.io/`,
           },
         ],
       },
