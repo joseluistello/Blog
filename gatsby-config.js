@@ -12,7 +12,7 @@ module.exports = {
     siteDescription: `Simplificando la complejidad`,
     siteLanguage: `es`,
     author: `joseluistello`,
-    siteImage: `/banner.jpg`,
+    siteImage: ``,
   },
   plugins: [
     {
