@@ -9,10 +9,10 @@ module.exports = {
     siteTitleAlt: `Jose Luis Tello`,
     siteHeadline: `Jose Luis Tello`,
     siteUrl: `https://joseluistello.live`,
-    siteDescription: `Simplificando la complejidad`,
+    siteDescription: `Analista de datos y desarrollador de software. Escribo como afición.`,
     siteLanguage: `es`,
-    author: `joseluistello`,
-    siteImage: ``,
+    author: `@joseluistello`,
+    siteImage: `/banner1.jpg`,
   },
   plugins: [
     {
