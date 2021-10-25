@@ -72,31 +72,28 @@ plt.rcParams['figure.figsize'] = (12, 10)
 df.info()
 ```
 
-    <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 63221 entries, 0 to 63220
-    Data columns (total 12 columns):
-     #   Column        Non-Null Count  Dtype 
-    ---  ------        --------------  ----- 
-     0   Orden         63221 non-null  int32 
-     1   Fecha         63221 non-null  object
-     2   Medio         63221 non-null  object
-     3   Vendedor      63221 non-null  object
-     4   Plataforma    63221 non-null  object
-     5   Comision      63221 non-null  object
-     6   Tipo_Orden    63221 non-null  object
-     7   Tipo_Cliente  63221 non-null  object
-     8   Sexo          63221 non-null  object
-     9   Categoría     63221 non-null  object
-     10  Producto      63221 non-null  object
-     11  Precio        63221 non-null  int32 
-    dtypes: int32(2), object(10)
-    memory usage: 5.3+ MB
+| Index | Columna | Non-Null | Count | Dtype |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+|     0  | Orden        | 63221 | non-null | int32  |
+|     1  | Fecha        | 63221 | non-null | object |
+|     2  | Medio        | 63221 | non-null | object |
+|     3  | Vendedor     | 63221 | non-null | object |
+|     4  | Plataforma   | 63221 | non-null | object |
+|     5  | Comision     | 63221 | non-null | object |
+|     6  | Tipo_Orden   | 63221 | non-null | object |
+|     7  | Tipo_Cliente | 63221 | non-null | object |
+|     8  | Sexo         | 63221 | non-null | object |
+|     9  | Categoría    | 63221 | non-null | object |
+|     10 | Producto     | 63221 | non-null | object |
+|     11 | Precio       | 63221 | non-null | int32 |
+
     
     
-Primero debemos entender a que nos enfrentamos. El hecho de hacer preguntas como:
-* ¿Son cualitativas o cuantitativas? 
-* ¿Son continuas o categorias? 
-Nos ayuda a tener una idea de como abordar un analisis. Empecemos por explicar la ciasificación de las variables.
+Para saber a que nos enfrentamos y que necesitamos debemos hacer preguntas como:
+* ¿Las variables son cualitativas o cuantitativas? 
+* ¿Son de naturaleza continua o categorica? 
+
+Esto nos ayuda a tener una idea de como abordar un analisis. Empecemos por explicar la ciasificación de las variables.
 
 - Los datos categoricos responden a preguntas como "qué", "quienes", o "donde", y se clasifican en tres grupos:
     - Datos nominales 
@@ -144,11 +141,10 @@ df["Sexo"]
     .value_counts()
 )
 ```
-
-    Mujeres    35937
-    Hombre     27284
-    Name: Sexo, dtype: int64
-
+| Sexo | Cantidad |
+| ----------- | ----------- |
+| Mujeres | 35937 |
+| Hombre | 27284 |
 
 ```python
 (
@@ -159,11 +155,10 @@ df["Sexo"]
     .astype(str) + '%'
 )
 ```
-
-    Mujeres    56.8%
-    Hombre     43.2%
-    Name: Sexo, dtype: object
-
+| Sexo | Porcentaje Total |
+| ----------- | ----------- |
+|    Mujeres  |  56.8% |
+|    Hombre    | 43.2% |
 
 
 Ahora se que existe una mayoría de mujeres dentro de mi set, lo cual me da señales que planeo ir guardando. Pensemoslo de esta manera:
@@ -181,12 +176,13 @@ df["Plataforma"]
     .astype(str)+ '%'
 )
 ```
+| Plataforma | Porcentaje total |
+| ----------- | ----------- |
+|    Instagram   | 53.6% |
+|    Youtube   |   17.5% |
+|    Facebook  |   15.4% |
+|    Website   |   13.5% |
 
-    Instagram    53.6%
-    Youtube      17.5%
-    Facebook     15.4%
-    Website      13.5%
-    Name: Plataforma, dtype: object
 
 
 Lo que nos arroja este resultado es el total de observaciones que presento cada plataforma. Esto quiere decir (hasta ahora) que Instagram es la que más unidades vende, pero eso no significa que sea la que más revenue genere.
@@ -201,24 +197,19 @@ df["Vendedor"]
 )
 ```
 
-
-
-
-    Publicidad Insta      20.0%
-    Directo en Tienda     13.5%
-    Publicidad Face        9.4%
-    Publicidad Youtube     7.9%
-    karlagvzcia            4.5%
-                          ...  
-    geogluisovec           0.5%
-    gypseajain             0.5%
-    nicole.izuristilo      0.5%
-    anacsimdao             0.3%
-    andreaheraz            0.3%
-    Name: Vendedor, Length: 44, dtype: object
-
-
-
+| Vendedor | Porcentaje |
+| ----------- | ----------- |
+|    Publicidad Insta   |   20.0% |
+|    Directo en Tienda   |  13.5% |
+|    Publicidad Face     |   9.4% |
+|    Publicidad Youtube  |   7.9% |
+|    karlagvzcia         |   4.5% |
+|                        |  ...   |
+|    geogluisovec        |   0.5% |
+|    gypseajain          |   0.5% |
+|    nicole.izuristilo   |   0.5% |
+|    anacsimdao          |   0.3% |
+|    andreaheraz         |   0.3% |
 
 ```python
 df["Vendedor"].hist(bins=10, color='r')
@@ -227,12 +218,9 @@ plt.grid(False)
 plt.show
 ```
 
-
     
 ![png](./output1.png)
     
-
-
 
 ```python
 (
@@ -240,16 +228,10 @@ df["Tipo_Cliente"]
     .value_counts()
 )
 ```
-
-
-
-
-    Repetido    32561
-    Nuevo       30660
-    Name: Tipo_Cliente, dtype: int64
-
-
-
+| Tipo de cliente | Total |
+| ----------- | ----------- |
+|    Repetido   | 32561 |
+|    Nuevo      | 30660 |
 
 ```python
 (
@@ -260,15 +242,10 @@ df["Tipo_Orden"]
     .astype(str)+ '%'
 )
 ```
-
-
-
-
-    Compra        91.0%
-    Devolucion     9.0%
-    Name: Tipo_Orden, dtype: object
-
-
+| Tipo de orden | Porcentaje total |
+| ----------- | ----------- |
+|    Compra     |   91.0% |
+|    Devolucion   |  9.0% |
 
 
 ```python
@@ -277,18 +254,13 @@ df["Comision"]
     .value_counts()
 )
 ```
-
-
-
-
-    0%     32150
-    30%    12807
-    20%     6702
-    10%     5872
-    40%     5690
-    Name: Comision, dtype: int64
-
-
+| Comision | Total |
+| ----------- | ----------- |
+|    0%   |  32150 |
+|    30%  |  12807 |
+|    20%  |   6702 |
+|    10%  |   5872 |
+|    40% |    5690 |
 
 
 ```python
@@ -301,14 +273,10 @@ df["Medio"]
 )
 ```
 
-
-
-
-    Propio        50.9%
-    Influencer    49.1%
-    Name: Medio, dtype: object
-
-
+| Canal propio o externo | Porcentaje total |
+| ----------- | ----------- |
+|    Propio   |     50.9% |
+|    Influencer  |  49.1% |
 
 
 ```python
@@ -318,19 +286,16 @@ df["Precio"]
     .round(1)
 )
 ```
-
-
-
-
-    count    63221.0
-    mean        40.7
-    std         13.6
-    min         10.0
-    25%         34.0
-    50%         40.0
-    75%         50.0
-    max        100.0
-    Name: Precio, dtype: float64
+| Estadistica | Total |
+| ----------- | ----------- |
+|    count  |  63221.0 |
+|    mean    |    40.7 |
+|    std     |    13.6 |
+|    min     |    10.0 |
+|    25%     |    34.0 |
+|    50%     |    40.0 |
+|    75%     |    50.0 |
+|    max    |    100.0 |
 
 
 ```python
@@ -344,7 +309,7 @@ PrecioDist.set_xlabel("Precio de los productos", fontsize = 15)
 PrecioDist.set_ylabel("Volumen de productos", fontsize = 15)
 ```
 
-![png](/img/ecommerce/output2.png)
+![png](./output2.png)
     
 
 
@@ -370,7 +335,7 @@ Se que estoy limitado por paradigmas, esquemas y modelos pero en otro contexto e
 
 Si no fui muy claro, dejame que te lo explique de esta manera. En este punto debemos comenzar a preguntarnos que es lo que queremos lograr y como una variable depende o se relaciona con la otra, y el como podemos sacar el maximo provecho de eso. Algo así como esto:
 
-![png](/img/ecommerce/dependencies.png)
+![png](./dependencies.png)
     
 
 Mmmmm, voy a utilizar un approach top-down. Esto significa que ire desde arriba hacía abajo explorando cada relacion que este en mi cabeza con un rumbo definido. 
