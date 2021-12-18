@@ -58,12 +58,12 @@ module.exports = {
         ],
       },
     },
-    googleAnalyticsTrackingId && {
-      resolve: `gatsby-plugin-google-analytics`,
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
       options: {
-        trackingId: `G-44X4BH64G8`,
-        head: true,
-        anonymize: true,
+        id: "GTM-KB323LN",
+        includeInDevelopment: false,
+        enableWebVitalsTracking: true,
       },
     },
     `gatsby-plugin-sitemap`,
