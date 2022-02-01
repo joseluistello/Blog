@@ -2,18 +2,14 @@
 title: "Como consumir y transformar los datos de una API Rest para un analisis mas rapido"
 date: 2021-09-04
 tags: 
-    - API Rest
-    - Finanzas
+    - Blog
+    - Finance
     - Python
-    - Project
 ---
 
 #### ¡Bienvenido de nuevo! 👋  
 
-
-En esta ocasión vamos a trabajar con una [API Financiera](https://financialmodelingprep.com/developer/docs)
-
-Hice este proyecto para enseñar una manera rapida de analizar cuantitativamente a las empresas. El ultimo año estuve aprendiendo finanzas y desarrollando modelos financieros, podria decirse que soy un "hobbyista" de las finanzas.
+Este ultimo año estuve experimentando con las finanzas corporativas, en especial con desarrollador/adaptar modelos financieros. Me volví un adicto consciente que detectaba cosas poco sanas y justo una de ellas era el traspasar los datos manualmente a la hora de crear cualquier tipo de analisis. Se el dolor y el amor que podemos experimentar al crear modelos financieros, buscar dentro de un reporte anual (K10) y pasar datos a mano es un proceso lento lleno de fricciones.
 
 ![png](./modelo1.png)
 
@@ -23,9 +19,7 @@ Hice este proyecto para enseñar una manera rapida de analizar cuantitativamente
 
 ![png](./modelo4.png)
 
-Se el dolor y el amor que podemos experimentar al crear modelos financieros. Buscar dentro de un reporte anual K10  y pasar datos a mano es un proceso lento y lleno de fricciones. Por eso hice este proyecto, esta es mi propuesta para agilizar la recolección de datos financieros. 
-
-En este proyecto aprenderas sobre:
+ Como ustedes sabran eso es impensable para un desarrollador, por ello decidi experimentar con muchas API's hasta que encontre una [API financiera](https://financialmodelingprep.com/developer/docs) con una clara documentación y que me daba lo que quería; datos de [EDGAR](https://www.sec.gov/edgar/about). En este post aprenderas sobre:
 
 ###### 1. Que es una API
 ###### 2. Que es REST
@@ -39,13 +33,11 @@ En este proyecto aprenderas sobre:
 
 #### Que es una API
 
-Una API es una interfaz que ofrece un servicio de comunicación. A diferencia de una UI (interfaz de usuario) que conecta a una persona con una computadora, una API conecta computadoras o software entre ellos mismos.
-
-Estan hechas de diferentes partes que actuan como herramientas o servicios. Un programador puede llamar a uno de estos servicios a traves de metodos, requests o endpoints los cuales estan definidos en las espicificaciones de una API. 
+Una API es una interfaz de comunicación. A diferencia de una UI (interfaz de usuario o justo lo que ves e interactuas) que permite una comunicación entre persona-computadora, una API conecta computadoras-software entre ellas. Con una API un programador puede construir aplicaciones enteras o simplemente distribuidor los datos que tiene previamente almacenados en una base de datos, si, justo lo que hace la API que veremos en este blog.
 
 #### Que es REST 
 
-REST fue propuesto por Roy Thomas en un paper titulado " Architectural Styles and the Design of Network-based Software Architectures". REST es un tipo de diseño/arquitectura al que se puede someter una API. Una de las ideas detras de REST es ver a los datos como objetos que puedes llamar, crear o destruir a través de metodos y que son representados en formato JSON, XML o RDF. 
+REST fue propuesto por Roy Thomas en un paper titulado " Architectural Styles and the Design of Network-based Software Architectures". REST es un tipo de diseño/arquitectura con el que see hacen APIs. Una de las ideas detras de REST es ver a los datos como objetos que puedes llamar, crear o destruir a través de metodos y que son representados en formato JSON, XML o RDF. Existen diferentes metodos pero estos son los más usados:
 
 | Metodo | Descripcion |
 | ----------- | ----------- |
@@ -54,9 +46,13 @@ REST fue propuesto por Roy Thomas en un paper titulado " Architectural Styles an
 | PUT | Actualiza informacion |
 | DELETE | Borra informacion | 
 
-[Como explicarle REST a tu esposa](http://www.looah.com/source/view/2284)
+Si no te quedo claro, piensa en esto:
 
-Esto es justo lo que haremos ahora. Imaginemos a una API de arquitectura tipo REST como un ente que nos ayuda a traer datos desde una base externa. Nuestra computadora necesita comunicarse con otra y una API REST es la mejor forma de hacerlo. Para ello, utilizaremos el modulo **requests** de Python donde podemos enviar pedimentos HTTP de manera sencilla. 
+Imaginemos a una API de arquitectura tipo REST como un ente que nos ayuda a traer datos desde una base externa. Nuestra computadora necesita comunicarse con otra y una API REST es la mejor forma de hacerlo. Para ello, utilizaremos el modulo **requests** de Python donde podemos enviar pedimentos HTTP de manera sencilla. 
+
+O puedes leer esto:
+
+[Como explicarle REST a tu esposa](http://www.looah.com/source/view/2284)
 
 #### Que es HTTP
 
