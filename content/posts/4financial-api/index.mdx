@@ -21,23 +21,22 @@ Este ultimo año estuve experimentando con las finanzas corporativas, en especia
 
  Como ustedes sabran eso es impensable para un desarrollador, por ello decidi experimentar con muchas API's hasta que encontre una [API financiera](https://financialmodelingprep.com/developer/docs) con una clara documentación y que me daba lo que quería; datos de [EDGAR](https://www.sec.gov/edgar/about). En este post aprenderas sobre:
 
-###### 1. Que es una API
-###### 2. Que es REST
-###### 3. Que es HTTP
-###### 4. Como extraer datos de una API
-###### 5. Transformar los datos de JSON de una API a un dataframe de Pandas
-###### 6. Como graficar los datos con Matplotlib y Numpy
-###### 7. Como guardar los datos dentro de un CSV para que los manipules con en Excel, R u otra herramienta de tu agrado
+###### 1. Que es un API REST
+###### 2. Como se comunican las API REST 
+###### 2. Como extraer datos de una API REST 
+###### 3. Transformar los datos de JSON de una API a un dataframe de Pandas
+###### 4. Como graficar los datos con Matplotlib y Numpy
+###### 5. Como guardar los datos dentro de un CSV para que los manipules con en Excel, R u otra herramienta de tu agrado
 
 --- 
 
-#### Que es una API
+#### Que es un API REST
 
-Una API es una interfaz de comunicación. A diferencia de una UI (interfaz de usuario o justo lo que ves e interactuas) que permite una comunicación entre persona-computadora, una API conecta computadoras-software entre ellas. Con una API un programador puede construir aplicaciones enteras o simplemente distribuidor los datos que tiene previamente almacenados en una base de datos, si, justo lo que hace la API que veremos en este blog.
+Una API es una interfaz de comunicación. A diferencia de una UI (interfaz de usuario) que permite una comunicación entre persona-computadora, una API conecta computadoras-software entre ellas. Con una API un programador puede construir aplicaciones enteras o simplemente distribuidor los datos que tiene previamente almacenados en una base de datos, si, justo lo que hace la API que veremos en este blog.
 
-#### Que es REST 
+API REST es una API que se construyo bajo un diseño de arquitectura llamado REST. REST fue propuesto por Roy Thomas en un paper titulado **Architectural Styles and the Design of Network-based Software Architectures**, y es un estilo de arquitectura que se creo con el fin de definir un conjunto de restricciones para la comunicación en sistemas distribuidos como la WEB. 
 
-REST fue propuesto por Roy Thomas en un paper titulado " Architectural Styles and the Design of Network-based Software Architectures". REST es un tipo de diseño/arquitectura con el que see hacen APIs. Una de las ideas detras de REST es ver a los datos como objetos que puedes llamar, crear o destruir a través de metodos y que son representados en formato JSON, XML o RDF. Existen diferentes metodos pero estos son los más usados:
+Una de las ideas detras de REST es ver a los datos como objetos que puedes llamar, crear o destruir a través de metodos y que son representados en formato JSON, XML o RDF. Algunos de los metodos más usados son los siguientes:
 
 | Metodo | Descripcion |
 | ----------- | ----------- |
@@ -46,23 +45,16 @@ REST fue propuesto por Roy Thomas en un paper titulado " Architectural Styles an
 | PUT | Actualiza informacion |
 | DELETE | Borra informacion | 
 
-Si no te quedo claro, piensa en esto:
+#### Como se comunican las API REST
 
-Imaginemos a una API de arquitectura tipo REST como un ente que nos ayuda a traer datos desde una base externa. Nuestra computadora necesita comunicarse con otra y una API REST es la mejor forma de hacerlo. Para ello, utilizaremos el modulo **requests** de Python donde podemos enviar pedimentos HTTP de manera sencilla. 
-
-O puedes leer esto:
-
-[Como explicarle REST a tu esposa](http://www.looah.com/source/view/2284)
-
-#### Que es HTTP
-
-HTTP o Hypertext Transfer Protocol es un protocolo Request-Response (pedido y respuesta) cuya funcion principal es establecer una comunicación entre sistemas de la Internet que conforman el World Wide Web (WWW).
+Podriamos decir que se comunican a través de protocolos llamados HTTP o Hypertext Transfer Protocol los cuales son protocolos del tipo Request-Response (pedido y respuesta) y cuya funcion principal es establecer una comunicación entre sistemas de la Internet que conforman el World Wide Web (WWW).
 
 Fue creado para actuar como un puente entre los clientes y servidores. Este "puente" tiene metodos definidos que indican acciones *deseadas* por parte de un cliente hacia un recurso especifico. Lo que el recurso represente depende de lo que se implemento en el servidor. Basicamente REST es la manera en que HTTP se debe usar.
 
-#### Extrayendo datos de una API
+#### Como extraer datos de una API REST
 
-Hay 3 reglas que se deben seguir para usar una API REST.
+Bien, ahora que entendiste lo que es una API REST y como se comunican entre ellas es hora de entender como usarlas en nuestro beneficio. Hay 3 reglas que se deben seguir para usar/consumir una API REST.
+
 1. Definir el metodo
 2. Definir los parametros
 3. Hacer el request
@@ -74,7 +66,7 @@ Nuestros parametros seran:
 2. El ticket en la bolsa de la empresa de nuestro interes
 3. Los años
 
-En esta ocasion haremos un request de datos financieros del Income Statement de NVDA. 
+**En esta ocasion haremos un request de datos financieros del Income Statement de NVIDIA con el id/ticket NVDA.** 
 
 ```python
 import requests 
@@ -88,7 +80,7 @@ company = "NVDA"
 years = 5
 ```
 
-Si lo que quieres es su Balance Sheet o Cash Flow solo cambia esto la parte de income-statement en la URL por balance-sheet o cash-flow
+**Si lo que quieres es su Balance Sheet o Cash Flow solo cambia la parte de income-statement en la URL por balance-sheet o cash-flow**
 
 ```python
 # REQUEST GET  con el package Requests.
@@ -103,7 +95,7 @@ print(data)
 
 #### Transformando los datos JSON a un DF
 
-Trabajar con un JSON no es recomendable pues es dificil manipularlo, al final del día fueron creados para enviar y recibir información entre servidores pero no para ser analizados. Contrario a esto, Pandas nos permite transformarlos de una manera super sencilla a un Dataframe con el siguiente codigo.
+Analizar datos de tipo JSON no es recomendable, son dificiles de manipular ya que su proposito principal es enviar y recibir información entre servidores. Por suerte tenemos Pandas, una libreria de Python creada por Wes McKinney cuyo proposito es manipular, transformar y analizar datos de una manera así que solo toca cambiar el formato JSON por el de DF.
 
 Primero importamos pandas. 
 
@@ -111,16 +103,12 @@ Primero importamos pandas.
 import pandas as pd
 ```
 
-Y despues escribimos este pedazo de codigo.
+Y despues escribimos este pedazo de codigo el cual nos permite cambiar el formato.
 
 ```python
 df = pd.DataFrame(data)
 df.info()
 ```
-
-    <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 5 entries, 0 to 4
-    Data columns (total 35 columns):
      #   Column                                   Non-Null Count  Dtype  
     ---  ------                                   --------------  -----  
      0   date                                     5 non-null      object 
@@ -158,16 +146,13 @@ df.info()
      32  weightedAverageShsOutDil                 5 non-null      int64  
      33  link                                     5 non-null      object 
      34  finalLink                                5 non-null      object 
-    dtypes: float64(10), int64(17), object(8)
-    memory usage: 1.5+ KB
     
 
-Listo. Los datos vienen sin valores nulos y estan en buen estado así que podemos analizarlos a partir de ahora. 
-Lo unico que hare es quitar quitar algunas columnas como los ratios, pero no es necesario que tu lo hagas si no quieres. 
+Los datos vienen sin valores nulos Lo unico que hare es quitar quitar algunas columnas como los ratios, pero no es necesario que tu lo hagas si no quieres. 
 
-Lo que si es necesario es que apliques un SORT. Esto te permite cambiar el orden del frame a partir de sus fechas, pues si lo graficos de esta manera los plots te saldran invertidos.
+Lo que si es necesario es que apliques un SORT. Esto te permite cambiar el orden del frame a partir de sus fechas ya que si lo graficamos de esta manera los plots te saldran invertidos.
 
-Con esto dropeamos o eliminalos las columnas.
+Con esto eliminalos las columnas.
 
 ```python
 df = df.drop(columns=['reportedCurrency', 
