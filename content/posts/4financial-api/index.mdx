@@ -53,25 +53,30 @@ Fue creado para actuar como un puente entre los clientes y servidores. Este "pue
 
 #### Como extraer datos de una API REST
 
-Bien, ahora que entendiste lo que es una API REST y como se comunican entre ellas es hora de entender como usarlas en nuestro beneficio. Hay 3 reglas que se deben seguir para usar/consumir una API REST.
+Ahora que entendiste lo que es una API REST es hora de empezar a usarlas a favor de nuestro beneficio. Hay 3 reglas que se deben seguir para consumir una API REST.
 
 1. Definir el metodo
 2. Definir los parametros
 3. Hacer el request
 
-Nuestro metodo sera de tipo GET que es lo mismo que pedir informacion de la API.
+Nuestro metodo sera de tipo GET lo cual es igual a pedirle datos a la API.
 
-Nuestros parametros seran:
+Una vez definido el metodo pasamos a definir los parametros que utilizaremos para que la consulta se realice:
+
 1. La llave de la API (la puedes conseguir [creando una cuenta](https://financialmodelingprep.com/register) en el portal de la API) 
-2. El ticket en la bolsa de la empresa de nuestro interes
-3. Los años
+2. El ticket con el que se identifica a la empresa dentro de las bolsas de valores
+3. Los años que es lo mismo que definir un periodo de tiempo
 
-**En esta ocasion haremos un request de datos financieros del Income Statement de NVIDIA con el id/ticket NVDA.** 
+En esta ocasion haremos un request de datos financieros del Income Statement de NVIDIA con el id/ticket NVDA dentro de un periodo de 5 años.
+
+Empezamos por invocar los paquetes que utilizaremos. En este caso es [requests](https://pypi.org/project/requests/) y JSON.
 
 ```python
 import requests 
 import json
 ```
+
+Ahora definimos los parametros que es la llave que necesitamos, el ticket y los años.
 
 ```python
 # DEFINIENDO PARAMETROS #
@@ -80,7 +85,7 @@ company = "NVDA"
 years = 5
 ```
 
-**Si lo que quieres es su Balance Sheet o Cash Flow solo cambia la parte de income-statement en la URL por balance-sheet o cash-flow**
+Es tiempo de solicitar los datos. **Por cierto, si lo que quieres es el balance Sheet o cash flow solo cambia la parte de income-statement en la URL por balance-sheet o cash-flow.**
 
 ```python
 # REQUEST GET  con el package Requests.
@@ -95,7 +100,7 @@ print(data)
 
 #### Transformando los datos JSON a un DF
 
-Analizar datos de tipo JSON no es recomendable, son dificiles de manipular ya que su proposito principal es enviar y recibir información entre servidores. Por suerte tenemos Pandas, una libreria de Python creada por Wes McKinney cuyo proposito es manipular, transformar y analizar datos de una manera así que solo toca cambiar el formato JSON por el de DF.
+Analizar datos de tipo JSON no es recomendable, son dificiles de manipular ya que su proposito principal es enviar y recibir información entre servidores. Por suerte tenemos Pandas, una libreria de Python creada por Wes McKinney cuyo proposito es manipular, transformar y analizar datos y nos ayuda en una tarea critica que es cambiar el formato JSON a DF.
 
 Primero importamos pandas. 
 
@@ -148,9 +153,7 @@ df.info()
      34  finalLink                                5 non-null      object 
     
 
-Los datos vienen sin valores nulos Lo unico que hare es quitar quitar algunas columnas como los ratios, pero no es necesario que tu lo hagas si no quieres. 
-
-Lo que si es necesario es que apliques un SORT. Esto te permite cambiar el orden del frame a partir de sus fechas ya que si lo graficamos de esta manera los plots te saldran invertidos.
+Los datos vienen sin valores nulos. Lo unico que hare es quitar quitar algunas columnas como los ratios y aplicar un SORT. Esto te permitira cambiar el orden del frame a partir de sus fechas ya que si lo graficamos de esta manera los plots te saldran invertidos.
 
 Con esto eliminalos las columnas.
 
@@ -177,7 +180,7 @@ df = df.sort_values("date")
 
 #### Graficando los datos
 
-Ahora que transformamos y limpiamos los datos, es hora de hacer algunos plots para mostrarte lo facil que es graficar el frame.
+Ahora que transformamos y limpiamos los datos, es hora de hacer algunos plots para mostrarte lo facil que es graficar.
 
 1. Primero cargare las librerias 
 2. Despues aplicare una configuración para el tamaño de los plots
