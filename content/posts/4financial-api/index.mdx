@@ -172,7 +172,7 @@ df = df.drop(columns=['reportedCurrency',
                       'epsdiluted'])
 ```
 
-Y con esto volteamos el frame.
+Y con el siguient codigo invertimos el orden del frame.
 
 ```python
 df = df.sort_values("date")
@@ -180,7 +180,7 @@ df = df.sort_values("date")
 
 #### Graficando los datos
 
-Ahora que transformamos y limpiamos los datos, es hora de hacer algunos plots para mostrarte lo facil que es graficar.
+Es hora de hacer algunos plots para mostrarte lo facil que es graficar.
 
 1. Primero cargare las librerias 
 2. Despues aplicare una configuración para el tamaño de los plots
@@ -199,7 +199,8 @@ import seaborn as sns
 plt.rcParams['figure.figsize'] = (12, 10)
 ```
 
-Utilizare dos metricas para comparar dentro de un periodo de 5 años:
+Para comparar utilizare dos metricas dentro de un periodo de 5 años:
+
 1. Las ventas de la compañia 
 2. Los costes de en los que incurre la compañia para hacer esas ventas 
 
