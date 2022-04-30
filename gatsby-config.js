@@ -59,21 +59,6 @@ module.exports = {
       },
     },
     {
-      "plugins": [
-        ["@babel/plugin-proposal-decorators", { "legacy": true }]
-      ],
-      "presets": [
-        [
-          "babel-preset-gatsby",
-          {
-            "targets": {
-              "browsers": [">0.25%", "not dead"]
-            }
-          }
-        ]
-      ]
-    },
-    {
       resolve: "gatsby-plugin-google-tagmanager",
       options: {
         id: "GTM-KB323LN",
