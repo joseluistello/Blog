@@ -9,8 +9,8 @@ module.exports = {
     siteTitleAlt: `Jose Luis Tello`,
     siteHeadline: `Jose Luis Tello`,
     siteUrl: `https://joseluistello.live`,
-    siteDescription: `Analista de datos y desarrollador de software. Escribo como afición.`,
-    siteLanguage: `es`,
+    siteDescription: `Curious about business, personal growth, & operations.`,
+    siteLanguage: `en`,
     author: `@joseluistello`,
     siteImage: `/banner1.jpg`,
   },
@@ -21,11 +21,11 @@ module.exports = {
       options: {
         navigation: [
           {
-            title: `Libreria`,
+            title: `Library`,
             slug: `/blog`,
           },
           {
-            title: `Sobre mi`,
+            title: `About me`,
             slug: `/about`,
           },
         ],
