@@ -5,11 +5,11 @@ const googleAnalyticsTrackingId = process.env.GOOGLE_ANALYTICS_ID
 
 module.exports = {
   siteMetadata: {
-    siteTitle: `Jose Luis Tello`,
+    siteTitle: `Home`,
     siteTitleAlt: `Jose Luis Tello`,
     siteHeadline: `Jose Luis Tello`,
     siteUrl: `https://joseluistello.live`,
-    siteDescription: `Curious about business, personal growth, & operations.`,
+    siteDescription: `Curious about businesses, product, operations, and software.`,
     siteLanguage: `en`,
     author: `@joseluistello`,
     siteImage: `/banner1.jpg`,
@@ -35,8 +35,8 @@ module.exports = {
             url: `https://twitter.com/jotaele_tello`,
           },
           {
-            name: `Github`,
-            url: `https://github.com/joseluistello`,
+            name: `Linktree`,
+            url: `https://linktr.ee/joseluistello`,
           },
         ],
       },
@@ -72,7 +72,7 @@ module.exports = {
       options: {
         name: `Jose Luis Tello`,
         short_name: `Jose Luis Tello`,
-        description: `Analista de datos`,
+        description: `Technical Advisor`,
         start_url: `/`,
         background_color: `#fff`,
         theme_color: `#6B46C1`,
