@@ -31,8 +31,8 @@ module.exports = {
         ],
         externalLinks: [
           {
-            name: `Twitter`,
-            url: `https://twitter.com/jotaele_tello`,
+            name: `LinkedIn`,
+            url: `https://linkedin.com/in/joseluistello/`,
           },
           {
             name: `Linktree`,
