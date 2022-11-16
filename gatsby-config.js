@@ -127,7 +127,7 @@ module.exports = {
               }),
             query: `
               {
-                allPost(sort: { fields: date, order: DESC }) {
+                allPost(sort: {date: DESC }) {
                   nodes {
                     title
                     date(formatString: "MMMM D, YYYY")
